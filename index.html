@@ -1,11 +1,19 @@
 <html>
 <head>
+  <title>Bomberman-maze</title>
 </head>
 <body>
-	<p> git push </p>
-  <ul>
-		<li>asdfasdf</li>
-		<li>e8h023i</li>
-	</ul>
+	<h2>Bomberman-maze</h2>
+  <canvas id="gameCanvas" width="800px" height="600px">
+    You don't have a canvas?!
+  </canvas>
+
+
+	<script type="text/javascript" src="/lib/Map.js">
+	<script type="text/javascript">
+		var canvas = document.getElementById('gameCanvas');
+		var context = canvas.getContext("2d");
+		var map = new Map(canvas);
+	</script>
 </body>
 </html>
