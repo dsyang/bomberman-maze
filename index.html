@@ -4,7 +4,7 @@
 </head>
 <body>
 	<h2>Bomberman-maze</h2>
-  <canvas id="gameCanvas" width="840px" height="600px">
+  <canvas id="gameCanvas" width="840px" height="600px" style="border:1px solid black;">
     You don't have a canvas?!
   </canvas>
 
@@ -18,7 +18,7 @@
 		var map = new Map(canvas, context, {tiles: tileImg});
 		tileImg.onload = function () {
 		    map.initialize();
-		    map.draw(0,0); //
+		    map.draw(0,0); //block position to start (0,0) means draw the 0,0 block to the upper left
 		}
 	</script>
 </body>
