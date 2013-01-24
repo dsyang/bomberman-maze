@@ -4,16 +4,22 @@
 </head>
 <body>
 	<h2>Bomberman-maze</h2>
-  <canvas id="gameCanvas" width="800px" height="600px">
+  <canvas id="gameCanvas" width="840px" height="600px">
     You don't have a canvas?!
   </canvas>
 
-
-	<script type="text/javascript" src="/lib/Map.js">
+	<script type="text/javascript" src="/lib/util.js"></script>
+	<script type="text/javascript" src="/lib/Map.js"></script>
 	<script type="text/javascript">
+		var tileImg = new Image();
+		tileImg.src = "/img/tiles.png";
 		var canvas = document.getElementById('gameCanvas');
 		var context = canvas.getContext("2d");
-		var map = new Map(canvas);
+		var map = new Map(canvas, context, {tiles: tileImg});
+		tileImg.onload = function () {
+		    map.initialize();
+		    map.draw(0,0); //
+		}
 	</script>
 </body>
 </html>
