@@ -3,23 +3,42 @@
   <title>Bomberman-maze</title>
 </head>
 <body>
-	<h2>Bomberman-maze</h2>
+  <h2>Bomberman-maze</h2>
   <canvas id="gameCanvas" width="840px" height="600px" style="border:1px solid black;">
     You don't have a canvas?!
   </canvas>
 
-	<script type="text/javascript" src="/lib/util.js"></script>
-	<script type="text/javascript" src="/lib/Map.js"></script>
-	<script type="text/javascript">
-		var tileImg = new Image();
-		tileImg.src = "/img/tiles.png";
-		var canvas = document.getElementById('gameCanvas');
-		var context = canvas.getContext("2d");
-		var map = new Map(canvas, context, {tiles: tileImg});
-		tileImg.onload = function () {
-		    map.initialize();
-		    map.draw(0,0); //block position to start (0,0) means draw the 0,0 block to the upper left
-		}
-	</script>
+
+  <script type="text/javascript" src="/lib/util.js"></script>
+  <script type="text/javascript" src="/lib/Map.js"></script>
+  <script type="text/javascript" src="/lib/Player.js"></script>
+  <script type="text/javascript" src="/lib/Game.js"></script>
+
+  <script type="text/javascript">
+    var tileImg = new Image();
+    tileImg.src = "/img/tiles.png";
+    var canvas = document.getElementById('gameCanvas');
+    var game;
+    tileImg.onload = function () {
+        game = new Game(1, canvas, tileImg,{});
+        game.initialize();
+        game.start(10);
+    }
+
+
+    //var map = new Map(canvas, context, {tiles: tileImg});
+    //tileImg.onload = function () {
+    //map.initialize();
+    //map.draw(0,0); //block position to start (0,0) means draw the 0,0 block to the upper left
+    //};
+
+    //    var player = new Player(canvas, context);
+
+
+    // make canvas focusable, then give it focus!
+    canvas.setAttribute('tabindex','0');
+    canvas.focus();
+
+  </script>
 </body>
 </html>
