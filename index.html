@@ -56,6 +56,15 @@
         game.start(game_configs["fps"]);
     }
 
+    var keyboardCapture = document.getElementById("game");
+    function onKeyup (event) {
+        console.log(event.keyCode+" registered.");
+        game.keyQueue.push(event.keyCode);
+    };
+    document.addEventListener('keyup', onKeyup, false);
+
+
+
   </script>
 </body>
 </html>
