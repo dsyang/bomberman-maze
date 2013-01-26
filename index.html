@@ -2,9 +2,16 @@
 <head>
   <title>Bomberman-maze</title>
   <style>
+    /* simple styles to have the two screens next to each other and a debug screen with the whole map */
+    #game {
+      float: left;
+    }
     #player1, #player2 {
       margin: 10px;
       float: left;
+    }
+    #debug {
+      clear: both;
     }
   </style>
 </head>
@@ -13,20 +20,23 @@
   <div id="game">
     <div id="player1">
       <h2> Player 1</h2>
-      <canvas id="p1Canvas" width="400px" height="600px" style="border:1px solid black;">
+      <canvas id="p1Canvas" width="440px" height="600px" style="border:1px solid black;">
         You don't have a canvas?!
       </canvas>
     </div>
     <div id="player2">
       <h2> Player 2 </h2>
-      <canvas id="p2Canvas" width="400px" height="600px" style="border:1px solid black;">
+      <canvas id="p2Canvas" width="440px" height="600px" style="border:1px solid black;">
         You don't have a canvas?!
       </canvas>
       </div>
   </div>
-  <canvas id="debugCanvas" width="840px" height="600px" style="border:1px solid black;">
-    You don't have a canvas?!
-  </canvas>
+  <div id="debug">
+    <h3> Full Map </h3>
+    <canvas id="debugCanvas" width="920px" height="920px" style="border:1px solid black;">
+      You don't have a canvas?!
+    </canvas>
+  </div>
 
 
   <script type="text/javascript" src="/lib/configs.js"></script>
@@ -40,14 +50,16 @@
     var tileImg = new Image();
     tileImg.src = game_configs["tilesImg"];
     var view1 = new View(document.getElementById(game_configs["p1Canvas"]),
-                         { viewX: game_configs["p1Start"].x-1,
-                           viewY: game_configs["p1Start"].y-1});
+                         { viewLeft: game_configs["p1Start"].i,
+                           viewTop: game_configs["p1Start"].j,
+                           player: 1});
     var view2 = new View(document.getElementById(game_configs["p2Canvas"]),
-                         { viewX: game_configs["p2Start"].x-1,
-                           viewY: game_configs["p2Start"].y-1});
+                         { viewLeft: game_configs["p2Start"].i,
+                           viewTop: game_configs["p2Start"].j,
+                           player: 2});
     var viewDebug = new View(document.getElementById("debugCanvas"),
-                         { viewX: 0,
-                           viewY: 0});
+                         { viewLeft: 0,
+                           viewTop: 0});
 
     var game;
     tileImg.onload = function () {
@@ -61,7 +73,7 @@
         console.log(event.keyCode+" registered.");
         game.keyQueue.push(event.keyCode);
     };
-    document.addEventListener('keyup', onKeyup, false);
+    document.addEventListener("keyup", onKeyup, false);
 
 
 
