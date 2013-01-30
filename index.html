@@ -37,6 +37,15 @@
       </canvas>
       </div>
   </div>
+
+  <div id="ending">
+      <canvas id="endscreen" width="880px" height="600px" style="border:1px solid black;">
+        You don't have a canvas?!
+      </canvas>
+  </div>
+
+
+
   <div id="debug">
     <h3> Full Map </h3>
     <canvas id="debugCanvas" width="920px" height="920px" style="border:1px solid black;">
@@ -53,40 +62,6 @@
   <script type="text/javascript" src="lib/Player.js"></script>
   <script type="text/javascript" src="lib/Game.js"></script>
   <script type="text/javascript" src="lib/View.js"></script>
-
-
-  <script type="text/javascript">
-  var game;
-	var gameStart = function(){
-		var tileImg = new Image();
-		tileImg.src = game_configs["tilesImg"];
-		var view1 = new View(document.getElementById(game_configs["p1Canvas"]),
-							 { viewLeft: game_configs["p1Start"].i,
-							   viewTop: game_configs["p1Start"].j,
-							   player: 1});
-		var view2 = new View(document.getElementById(game_configs["p2Canvas"]),
-							 { viewLeft: game_configs["p2Start"].i,
-							   viewTop: game_configs["p2Start"].j,
-							   player: 2});
-		var viewDebug = new View(document.getElementById("debugCanvas"),
-							 { viewLeft: 0,
-							   viewTop: 0});
-
-
-		tileImg.onload = function () {
-			game = new Game(game_configs["numPlayer"], tileImg,{});
-			game.initialize(view1, view2, viewDebug);
-			game.start(game_configs["fps"]);
-		}
-
-		function onKeyup (event) {
-			console.log(event.keyCode+" registered.");
-			game.keyQueue.push(event.keyCode);
-		};
-		document.addEventListener("keyup", onKeyup, false);
-	}
-  </script>
-
   <script type="text/javascript" src="lib/Menu.js"></script>
 
 
