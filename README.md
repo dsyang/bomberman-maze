@@ -37,6 +37,7 @@ Javascript canvase all the way.
  - keyboard events: used to move players and bombs
  - drawing images: used everywhere
  - rendering text: the game over screen
+ - rendering arcs: a player's lives
 
 Cheat Codes
 -----------
